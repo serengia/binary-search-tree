@@ -47,6 +47,23 @@ class BinarySearchTree {
       }
     }
   }
+  find(value) {
+    if (!this.root) return false;
+    let current = this.root;
+    let found = false;
+
+    while (current && !found) {
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      } else {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
 
 const BST = new BinarySearchTree();
@@ -62,4 +79,4 @@ BST.insert(13);
 BST.insert(11);
 BST.insert(16);
 
-console.log(JSON.stringify(BST));
+console.log(JSON.stringify(BST.find(2)));
