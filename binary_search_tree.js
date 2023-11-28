@@ -47,6 +47,7 @@ class BinarySearchTree {
       }
     }
   }
+
   find(value) {
     if (!this.root) return false;
     let current = this.root;
@@ -64,6 +65,34 @@ class BinarySearchTree {
 
     return false;
   }
+
+  // --------------------------------
+  // TREE TRAVERSAL
+  // --------------------------------
+  // 1. Breath First
+  // 2. Depth First
+  //     - In-order
+  //     - Pre-order
+  //     - Post-order
+
+  breathFirstSearch() {
+    //             10
+    //       5             13
+    //  2        7     11       16
+    const queue = [];
+    const data = [];
+
+    queue.push(this.root);
+
+    while (queue.length !== 0) {
+      const node = queue.shift();
+      data.push(node.value);
+
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    return data;
+  }
 }
 
 const BST = new BinarySearchTree();
@@ -79,4 +108,4 @@ BST.insert(13);
 BST.insert(11);
 BST.insert(16);
 
-console.log(JSON.stringify(BST.find(2)));
+console.log(JSON.stringify(BST.breathFirstSearch()));
