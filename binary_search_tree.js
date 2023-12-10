@@ -107,5 +107,7 @@ BST.insert(13);
 BST.insert(11);
 BST.insert(16);
 
-console.log(JSON.stringify(BST.breathFirstSearch()));
-console.log(JSON.stringify(BST.find(1)));
+BST.insert(6);
+
+console.log(BST.breathFirstSearch());
+console.log(BST.find(1));
