@@ -35,7 +35,7 @@ class BinarySearchTree {
           current = current.left;
         }
       } else if (value > current.value) {
-        // Move right
+        // Move to the right
         if (!current.right) {
           current.right = newNode;
           return this;
@@ -51,9 +51,8 @@ class BinarySearchTree {
   find(value) {
     if (!this.root) return false;
     let current = this.root;
-    let found = false;
 
-    while (current && !found) {
+    while (current) {
       if (value < current.value) {
         current = current.left;
       } else if (value > current.value) {
@@ -71,9 +70,9 @@ class BinarySearchTree {
   // --------------------------------
   // 1. Breath First
   // 2. Depth First
-  //     - In-order
   //     - Pre-order
   //     - Post-order
+  //     - In-order
 
   breathFirstSearch() {
     //             10
@@ -109,3 +108,4 @@ BST.insert(11);
 BST.insert(16);
 
 console.log(JSON.stringify(BST.breathFirstSearch()));
+console.log(JSON.stringify(BST.find(1)));
