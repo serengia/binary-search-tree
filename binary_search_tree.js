@@ -120,6 +120,19 @@ class BinarySearchTree {
 
     return data;
   }
+
+  DFSInOrder() {
+    const data = [];
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      data.push(node.value);
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(this.root);
+
+    return data;
+  }
 }
 
 const BST = new BinarySearchTree();
@@ -138,7 +151,8 @@ BST.insert(16);
 BST.insert(6);
 
 console.log(BST.breathFirstSearch());
-console.log(BST.DFPreOrder());
-console.log(BST.DFPostOrder());
+console.log(BST.DFSPreOrder());
+console.log(BST.DFSPostOrder());
+console.log(BST.DFSInOrder());
 
 console.log(BST.find(1));
