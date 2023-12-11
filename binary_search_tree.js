@@ -93,13 +93,27 @@ class BinarySearchTree {
     return data;
   }
 
-  DFPreOrder() {
+  DFSPreOrder() {
     const data = [];
 
     function traverse(node) {
       data.push(node.value);
       if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);
+    }
+
+    traverse(this.root);
+
+    return data;
+  }
+
+  DFSPostOrder() {
+    // VISIT THE NODE AFTER VISITING ALL ITS CHILDREN
+    const data = [];
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.value);
     }
 
     traverse(this.root);
@@ -125,4 +139,6 @@ BST.insert(6);
 
 console.log(BST.breathFirstSearch());
 console.log(BST.DFPreOrder());
+console.log(BST.DFPostOrder());
+
 console.log(BST.find(1));
